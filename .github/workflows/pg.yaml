@@ -47,6 +47,7 @@ jobs:
           PASSWORD: postgres
           USER: postgres
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+          DATABASE: postgres
         run: |
-          /test.sh -t "${GITHUB_WORKSPACE}/.github/test.sql" -h $POSTGRES_HOST -p $POSTGRES_PORT -u $USER -w $PASSWORD
+          /test.sh -t "${GITHUB_WORKSPACE}/.github/test.sql" -h $POSTGRES_HOST -p $POSTGRES_PORT -u $USER -w $PASSWORD -d $DATABASE
 

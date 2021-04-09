@@ -44,7 +44,9 @@ jobs:
           # use postgres for the host here because we have specified a container for the job.
           # If we were running the job on the VM this would be localhost
           POSTGRES_HOST: postgres
+          PASSWORD: postgres
+          USER: postgres
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
-          /test.sh -t "${GITHUB_WORKSPACE}/.github/test.sql" -h $POSTGRES_HOST -p $POSTGRES_PORT
+          /test.sh -t "${GITHUB_WORKSPACE}/.github/test.sql" -h $POSTGRES_HOST -p $POSTGRES_PORT -u $USER -w $PASSWORD
 
